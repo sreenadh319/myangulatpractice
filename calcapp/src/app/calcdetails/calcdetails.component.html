@@ -1,0 +1,7 @@
+<input type="text" placeholder="Value One" [(ngModel)]="t1"/><br/>
+<input type="text" placeholder="Value Two"  [(ngModel)]="t2"/><br/>
+<input type="button" value=" * " name="*" (click)="fun1($event)"/>
+<input type="button" value=" + " name="+" (click)="fun1($event)"/>
+<input type="button" value=" - " name="-" (click)="fun1($event)"/>
+<input type="button" value=" / " name="/" (click)="fun1($event)"/><br/>
+<input type="text" placeholder="Result"  readonly [value]="result"/>
