@@ -1,0 +1,32 @@
+<h1 *ngIf="this.x>this.y else elsecontent">X is big</h1>
+<ng-template #elsecontent>
+    <h1 *ngIf="this.y>this.z else elsecontent1">Y is big</h1>
+</ng-template>
+<ng-template #elsecontent1>
+  <h1>Z is big</h1>
+</ng-template>
+
+<li *ngFor="let item of items">
+  {{item}}
+</li>
+
+<table *ngIf="this.userDetails.length>0">
+  <tr>
+      <th>
+        UserName
+      </th>
+      <th>City</th>
+    </tr>
+    <tr *ngFor="let item of userDetails">
+      <td>{{item.name}}</td>
+      <td>{{item.city}}</td>
+    </tr>
+</table>
+
+<select>
+  <option *ngFor="let item of dropDownValues" [value]="item">{{item}}</option>
+</select>
+<input type="text" name="" id="" [(ngModel)]="dropVal">
+<input type="button" value="Add" (click)="drpclick()">
+
+

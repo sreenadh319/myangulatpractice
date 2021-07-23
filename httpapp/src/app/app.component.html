@@ -1,0 +1,6 @@
+<label>Country Dropdown :</label>
+<select>
+  <option *ngFor="let item of dropDownData" [value]="item.alpha2Code">{{item.name}}</option>
+</select>
+<input type="button" (click)="loadDropDown($event)" value="Load DropDown"/>
+<router-outlet></router-outlet>

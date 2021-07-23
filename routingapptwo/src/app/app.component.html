@@ -1,0 +1,6 @@
+<a *ngIf="!loginService.isLogin" [routerLink]="[ '/login']">Login</a>
+<ng-container *ngIf="loginService.isLogin">
+  <a [routerLink]="[ '/hm']">Home</a>
+  <a [routerLink]="[ '/logout']">Logout</a>
+</ng-container>
+<router-outlet></router-outlet>

@@ -1,0 +1,20 @@
+<select name="imgName"  [(ngModel)]="imgSelected" (change)="dropDownChanges($event)">
+    <option [value]="item.id" *ngFor="let item of dropDownValues">{{item.name}}</option>
+</select>
+<span [ngSwitch]="imgSelected">
+<div *ngSwitchCase="'I'">
+    <img src="../../assets/img1.jpg">
+</div>
+<div *ngSwitchCase="'II'">
+    <img src="../../assets/img2.jpg">
+</div>
+<div *ngSwitchCase="'III'">
+    <img src="../../assets/img3.jpg">
+</div>
+<div *ngSwitchCase="'IV'">
+    <img src="../../assets/img4.jpg">
+</div>
+<p *ngSwitchDefault>
+    {{"No Image"}}
+</p>
+</span>

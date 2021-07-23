@@ -1,0 +1,59 @@
+<div class="container">
+    <label class="form-label">Name</label>
+    
+    <input type="text" class="form-control" name="t1" [(ngModel)]="t1"/>
+    <label class="form-label">City</label>
+    <input type="text" class="form-control" name="t2"  [(ngModel)]="t2"/>
+    <br/>
+    <input type="button" value="Submit" class="btn btn-success" (click)="create()"/>
+    <input type="button" value="Get Data" class="btn btn-primary" [ngStyle]="{'margin-left': '20px'}" (click)="getData($event)"/>
+    <br/>
+    <br/>
+    <br/>
+    <div class="input-group">
+        <input type="text" class="form-control"
+        style="outline: none !important;"
+        placeholder="Search . . ."
+         name="searchKey" [(ngModel)]="searchKey"/>
+        <div class="input-group-append">
+          <span class="input-group-text fa fa-search" 
+          style="font-size:25px"
+          >
+          </span>
+        </div>
+      </div>
+    
+
+    <table *ngIf="tableData.length > 0" class="table table-dark">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Action </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of tableData | filter:searchKey | paginate: { itemsPerPage: 2, currentPage: p }   ">
+                <ng-container *ngIf="updateId != item.id ;else updateFields">
+                    <td>{{item.name}}</td>
+                    <td>{{item.city}}</td>
+                    <td>
+                        <input type="button" value="Update" class="btn btn-warning" (click)="populate(item)"/>
+                        <input type="button" value="Delete" class="btn btn-danger" [ngStyle]="{'margin-left': '30px'}" (click)="delete(item.id)"/>
+                    </td>
+                </ng-container>
+            </tr>
+            
+        </tbody>        
+    </table>
+    <pagination-controls  *ngIf="tableData.length > 0" (pageChange)="p = $event"></pagination-controls>
+</div>
+
+<ng-template #updateFields>
+    <td><input type="text" class="form-control" name="updateName" [(ngModel)]="updateName"/></td>
+    <td><input type="text" class="form-control" name="updateCity" [(ngModel)]="updateCity"/></td>
+    <td>
+        <input type="button" value="Save" class="btn btn-success" (click)="update()"/>
+        <input type="button" value="Cancel" class="btn btn-primary" [ngStyle]="{'margin-left': '30px'}" (click)="updateCancel()"/>
+    </td>
+</ng-template>
